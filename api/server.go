@@ -32,6 +32,6 @@ func (s *Server) handleGetQuestion(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleSubmitAnswer(w http.ResponseWriter, r *http.Request) {
 	question := s.store.Submit(nil)
-	log.Print("getting quiz question")
+	log.Print("submit quiz question")
 	json.NewEncoder(w).Encode(question)
 }
