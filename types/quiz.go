@@ -1,21 +1,22 @@
 package types
 
-type Question struct {
-	ID      int      `json:"id"`
-	Text    string   `json:"text"`
-	Options []Option `json:"options"`
+type QuizQuestion struct {
+	ID              int          `json:"id"`
+	Text            string       `json:"text"`
+	QuizOptions     []QuizOption `json:"quiz_options"`
+	CorrectOptionID int          `json:"correct_option_id"`
 }
 
-type Option struct {
+type QuizOption struct {
 	ID   int    `json:"id"`
 	Text string `json:"text"`
 }
 
-type Result struct {
+type QuizResult struct {
 	CorrectCount int     `json:"correct_count"`
 	Percentile   float64 `json:"percentile"`
 }
 
-type SubmitRequest struct {
-	Answers map[string]int `json:"answers"`
+type QuizSubmitRequest struct {
+	QuizAnswers map[int]int `json:"quiz_answers"`
 }

@@ -1,8 +1,12 @@
 package storage
 
-import "fasttrackquiz/types"
+import (
+	"context"
+	"fasttrackquiz/types"
+)
 
+// Storage interface defines the behaviour of any Storage (memory, mysql, mongo..)
 type Storage interface {
-	Get() ([]types.Question, error)
-	Submit(*types.SubmitRequest) error
+	Get(ctx context.Context) ([]types.QuizQuestion, error)
+	Submit(ctx context.Context, req *types.QuizSubmitRequest) (*types.QuizResult, error)
 }

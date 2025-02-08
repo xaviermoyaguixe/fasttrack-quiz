@@ -11,6 +11,7 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() error {
-	rootCmd.AddCommand(quizTestCmd)
+	rootCmd.AddCommand(server)
+	rootCmd.AddCommand(client)
 	return rootCmd.Execute()
 }
