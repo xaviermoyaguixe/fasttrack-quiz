@@ -95,7 +95,6 @@ func makeRequest(method, url string, payload any, response any) error {
 
 func fetchQuestions() ([]types.QuizQuestion, error) {
 	var response struct {
-		Success bool                 `json:"success"`
 		Data    []types.QuizQuestion `json:"data"`
 		Message string               `json:"message"`
 	}
@@ -146,7 +145,6 @@ func submitAnswers(answers map[int]int) (*types.QuizResult, error) {
 	submitPayload := types.QuizSubmitRequest{QuizAnswers: answers}
 
 	var response struct {
-		Success bool             `json:"success"`
 		Data    types.QuizResult `json:"data"`
 		Message string           `json:"message"`
 	}
