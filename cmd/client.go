@@ -79,7 +79,10 @@ func makeRequest(method, url string, payload any, response any) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			return fmt.Errorf("read body response failed: %w", err)
+		}
 		return fmt.Errorf("server error: %s (status %d)", string(body), resp.StatusCode)
 	}
 
@@ -97,8 +100,7 @@ func fetchQuestions() ([]types.QuizQuestion, error) {
 		Message string               `json:"message"`
 	}
 
-	err := makeRequest("GET", endpointFetch, nil, &response)
-	if err != nil {
+	if err := makeRequest("GET", endpointFetch, nil, &response); err != nil {
 		return nil, err
 	}
 
@@ -149,8 +151,7 @@ func submitAnswers(answers map[int]int) (*types.QuizResult, error) {
 		Message string           `json:"message"`
 	}
 
-	err := makeRequest("POST", endpointSubmit, submitPayload, &response)
-	if err != nil {
+	if err := makeRequest("POST", endpointSubmit, submitPayload, &response); err != nil {
 		return nil, err
 	}
 
