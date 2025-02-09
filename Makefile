@@ -8,7 +8,7 @@ run-client: build
 	./quiz-cli start-client
 
 test:
-	go test ./... -v -cover
+	go test ./...
 
 clean:
 	rm -rf bin/*
