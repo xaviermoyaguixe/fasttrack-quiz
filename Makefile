@@ -1,5 +1,5 @@
 build:
-	go build -o quiz-cli . 
+	@go build -o quiz-cli . 
 
 run-server: build
 	./quiz-cli start-server

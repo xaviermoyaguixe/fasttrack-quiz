@@ -120,7 +120,7 @@ func collectUserAnswers(questions []types.QuizQuestion) map[int]int {
 		}
 
 		for {
-			fmt.Printf("➡️  Select your answer (1-%d): ", len(q.QuizOptions))
+			fmt.Printf("-> Select your answer (1-%d): ", len(q.QuizOptions))
 			input, err := reader.ReadString('\n')
 			if err != nil {
 				fmt.Println("Error reading input. Try again.")
