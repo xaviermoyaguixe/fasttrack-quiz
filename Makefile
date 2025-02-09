@@ -7,5 +7,8 @@ run-server: build
 run-client: build
 	./quiz-cli start-client
 
+test:
+	go test ./... -v -cover
+
 clean:
 	rm -rf bin/*
