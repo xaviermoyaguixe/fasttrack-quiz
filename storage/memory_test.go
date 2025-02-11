@@ -25,6 +25,8 @@ func TestSubmitAnswers(t *testing.T) {
 			1: 1,
 			2: 2,
 			3: 3,
+			4: 1,
+			5: 2,
 		},
 	}
 

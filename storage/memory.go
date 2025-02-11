@@ -61,8 +61,7 @@ func (ms *MemoryStorage) Submit(ctx context.Context, req *types.QuizSubmitReques
 		}
 
 		if userAnswer, exists := req.QuizAnswers[q.ID]; exists {
-			isCorrect := userAnswer == q.CorrectOptionID
-			if isCorrect {
+			if isCorrect := userAnswer == q.CorrectOptionID; isCorrect {
 				correctCount++
 			}
 		}

@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  server:
+    image: quiz-cli
+    ports:
+      - "3000:3000"
+    command: ["start-server"]
+    restart: always
+    environment:
+      - SERVER_PORT=:3000
+    networks:
+      - quiz-network
+
+networks:
+  quiz-network:
+    driver: bridge

@@ -16,13 +16,21 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const (
-	// In a real world scenario this goes in ENV.
-	serverAddr     = "http://localhost:3000"
-	endpointFetch  = serverAddr + "/questions"
-	endpointSubmit = serverAddr + "/submit"
-	// In a real world scenario this goes in ENV.
+var (
+	serverAddr     = getServerAddress()
+	endpointFetch  = serverAddr + "/api/v1/quiz/questions"
+	endpointSubmit = serverAddr + "/api/v1/quiz/submit"
 )
+
+func getServerAddress() string {
+	defaultAddr := "http://localhost:3001"
+
+	if addr, exists := os.LookupEnv("QUIZ_API_URL"); exists {
+		return addr
+	}
+
+	return defaultAddr
+}
 
 var client = &cobra.Command{
 	Use:   "start-client",

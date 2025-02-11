@@ -13,8 +13,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const port = ":3000" // In a real world scenario this goes in ENV.
-
 var server = &cobra.Command{
 	Use:   "start-server",
 	Short: "Start the quiz API server",
@@ -26,6 +24,11 @@ var server = &cobra.Command{
 func startServer() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
+	port := os.Getenv("SERVER_PORT")
+	if port == "" {
+		port = "3000"
+	}
 
 	logger := slog.Default()
 	store := storage.NewMemoryStorage(logger)
