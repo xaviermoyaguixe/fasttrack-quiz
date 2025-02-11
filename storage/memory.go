@@ -27,7 +27,7 @@ func NewMemoryStorage(logger *slog.Logger) *MemoryStorage {
 
 }
 
-func (ms *MemoryStorage) Get(ctx context.Context) ([]types.QuizQuestion, error) {
+func (ms *MemoryStorage) GetAllQuestions(ctx context.Context) ([]types.QuizQuestion, error) {
 	ms.mu.RLock()
 	defer ms.mu.RUnlock()
 
@@ -41,7 +41,7 @@ func (ms *MemoryStorage) Get(ctx context.Context) ([]types.QuizQuestion, error) 
 	return questionsCopy, nil
 }
 
-func (ms *MemoryStorage) Submit(ctx context.Context, req *types.QuizSubmitRequest) (*types.QuizResult, error) {
+func (ms *MemoryStorage) SubmitAnswers(ctx context.Context, req *types.QuizSubmitRequest) (*types.QuizResult, error) {
 	if req == nil || len(req.QuizAnswers) == 0 {
 		ms.logger.Error("Received empty or nil quiz submission")
 		return nil, errors.New("no answers submitted")

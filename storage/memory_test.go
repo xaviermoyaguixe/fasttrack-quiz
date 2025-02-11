@@ -11,7 +11,7 @@ import (
 func TestGetQuestions(t *testing.T) {
 	store := NewMemoryStorage(nil)
 
-	questions, err := store.Get(context.Background())
+	questions, err := store.GetAllQuestions(context.Background())
 	assert.NoError(t, err)
 	assert.NotEmpty(t, questions)
 	assert.Len(t, questions, 5)
@@ -30,7 +30,7 @@ func TestSubmitAnswers(t *testing.T) {
 		},
 	}
 
-	result, err := store.Submit(context.Background(), req)
+	result, err := store.SubmitAnswers(context.Background(), req)
 	assert.NoError(t, err)
 	assert.Equal(t, 2, result.CorrectCount)
 	assert.GreaterOrEqual(t, result.Percentile, 0.0)
