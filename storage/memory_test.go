@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetQuestions(t *testing.T) {
+func TestGetAllQuestions(t *testing.T) {
 	store := NewMemoryStorage(nil)
 
 	questions, err := store.GetAllQuestions(context.Background())
