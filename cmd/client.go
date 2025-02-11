@@ -23,7 +23,7 @@ var (
 )
 
 func getServerAddress() string {
-	defaultAddr := "http://localhost:3001"
+	defaultAddr := "http://localhost:3000"
 
 	if addr, exists := os.LookupEnv("QUIZ_API_URL"); exists {
 		return addr
