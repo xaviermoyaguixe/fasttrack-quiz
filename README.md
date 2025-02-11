@@ -1,6 +1,7 @@
 # FastTrackQuiz - Quiz API & CLI
 
-The task is to build a super simple quiz with a few questions and a few alternatives for each question. Each with one correct answer. 
+The task is to build a super simple quiz with a few questions and a few alternatives for each question. Each with one correct answer.
+***So, I keep it simple and focus on clarity, correctness, and maintainability to not overengineer a simple quiz test***.
 
 > **Note:**  
 > If you use Docker Compose, you don't need Go installed on your machine.  

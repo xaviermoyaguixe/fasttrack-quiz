@@ -3,7 +3,6 @@ package api
 import (
 	"context"
 	"encoding/json"
-	httpResponse "fasttrackquiz/pkg/http"
 	"fasttrackquiz/types"
 	"net/http"
 	"time"
@@ -26,7 +25,7 @@ func (s *Server) handleFetchQuizQuestions(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	httpResponse.WriteJSON(w, http.StatusOK, questions, "succesfully fetched quiz questions")
+	writeJSON(w, http.StatusOK, questions, "succesfully fetched quiz questions")
 }
 
 func (s *Server) handleSubmitAnswer(w http.ResponseWriter, r *http.Request) {
@@ -59,7 +58,7 @@ func (s *Server) handleSubmitAnswer(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	httpResponse.WriteJSON(w, http.StatusOK, quizResult, "successfully submitted quiz answers")
+	writeJSON(w, http.StatusOK, quizResult, "successfully submitted quiz answers")
 }
 
 func writeJSON(w http.ResponseWriter, status int, data any, message string) {
