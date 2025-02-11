@@ -6,6 +6,20 @@ The task is to build a super simple quiz with a few questions and a few alternat
 > If you use Docker Compose, you don't need Go installed on your machine.  
 > For a direct installation, you'll need Go (v1.23.4 or later) installed.
 
+## REST API Endpoints
+
+The API is deliberately kept simple yet functional, consisting of just two main endpoints:
+
+### GET `/api/v1/quiz/questions`
+- **Purpose:** Retrieves a list of quiz questions along with the available answers.
+- **Use Case:** When a user accesses the quiz, they first call this endpoint to fetch all the questions.
+- **Response:** Typically returns a JSON object containing an array of question objects, each with its possible answers.
+
+### POST `/api/v1/quiz/submit`
+- **Purpose:** Accepts the user's answers to the quiz questions.
+- **Use Case:** After the user completes the quiz, they submit their answers to this endpoint.
+- **Response:** Returns a JSON object containing the quiz result, including the number of correct answers and a comparative metric (for example, "better than 60% of all quizzers").
+
 ---
 
 ## Prerequisites
@@ -18,7 +32,7 @@ The task is to build a super simple quiz with a few questions and a few alternat
 
 ---
 
-## Quick Start
+## Quick Start - Make sure to go step by step
 
 ### Using Docker Compose
 
