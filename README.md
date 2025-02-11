@@ -43,7 +43,7 @@ This method provides a consistent, containerized environment—**no Go installat
    Run the following command in the project root:
 
    ```sh
-   docker-compose up --build
+   docker compose up --build
    ```
 2. **In a new terminal runs the CLI**
 
@@ -57,7 +57,7 @@ This method provides a consistent, containerized environment—**no Go installat
    Run the following command in the project root:
 
    ```sh
-   docker-compose down
+   docker compose down
    ```
 ### Normal Installation (Without Docker)
 
