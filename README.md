@@ -1,57 +1,82 @@
-# 🎯 FastTrackQuiz - Quiz API & CLI
-## Usage
+# FastTrackQuiz - Quiz API & CLI
 
-When server and client are up and running, the quiz will start.
-Only need to follow the instructions to complete all the answers.
+The task is to build a super simple quiz with a few questions and a few alternatives for each question. Each with one correct answer. 
 
-# ⚡️ Normal quick start
+> **Note:**  
+> If you use Docker Compose, you don't need Go installed on your machine.  
+> For a direct installation, you'll need Go (v1.23.4 or later) installed.
 
-### **1️⃣ Build the binary**
-```sh
-go build -o quiz-cli .
-```
+---
 
-### **1️⃣ Run the API Server**
-```sh
-./quiz-cli start-server
-```
+## Prerequisites
 
-### **2️⃣ Run the CLI Client**
-```sh
-./quiz-cli start-client
-```
+### For Docker-based Installation (Recommended)
+- **Docker** and **Docker Compose** installed on your machine.
 
-# ⚡️ Make quick start - Necessary ``make`` installed
-```Linux: sudo apt-get install make```
+### For Normal (Direct) Installation
+- **Go** (v1.23.4 or later) installed on your machine.
 
-```macOS: brew install make```
+---
 
+## Quick Start
 
-### **1️⃣ Run the API Server**
-```sh
-make run-server
-```
+### Using Docker Compose
 
-### **2️⃣ Run the CLI Client**
-```sh
-make run-client
-```
-# Testing
-```sh
-go test ./...
-```
+This method provides a consistent, containerized environment—**no Go installation is required.**
 
-# Testing with ``make``
-```sh
-make test
-```
+1. **Build & Start the Server**
 
-## Conclusion
+   Run the following command in the project root:
 
-I tried to keep this test as simple as possible, but since this is a backend engineering test, I decided to include some things:
+   ```sh
+   docker-compose up --build
+   ```
+2. **In a new terminal runs the CLI**
 
-```
-Deep Logging (slog.Logger) - Helps track API calls and submissions.
-Use of Locks (sync.Mutex) - Ensures concurrency safety if scaling concurrent users.
-Graceful Shutdown - Handles termination signals properly.
-```
+   Run the following command in the project root:
+
+   ```sh
+   docker run -it --rm --network=fasttrack-quiz_quiz-network -e QUIZ_API_URL=http://server:3000 quiz-cli start-client
+   ```
+3. **Stop services & Docker**
+
+   Run the following command in the project root:
+
+   ```sh
+   docker-compose down
+   ```
+### Normal Installation (Without Docker)
+
+This method provides a consistent, containerized environment—**no Go installation is required.**
+
+1. **Build the Binary**
+
+   Run the following command in the project root:
+
+   ```sh
+   go build -o quiz-cli .
+   ```
+2. **Build & Start the Services**
+
+   Run the following command in the project root:
+
+   ```sh
+   ./quiz-cli start-server
+   ```
+3. **In a new terminal run the CLI**
+
+   Run the following command in the project root:
+
+   ```sh
+   ./quiz-cli start-client
+   ```
+---
+### Testing
+
+1. **Locally test**
+
+   Run the following command in the project root:
+
+   ```sh
+   go test ./...
+   ```
