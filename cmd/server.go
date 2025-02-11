@@ -27,7 +27,7 @@ func startServer() {
 
 	port := os.Getenv("SERVER_PORT")
 	if port == "" {
-		port = "3000"
+		port = ":3000"
 	}
 
 	logger := slog.Default()
