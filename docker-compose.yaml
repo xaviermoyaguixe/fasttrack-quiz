@@ -2,6 +2,9 @@ version: "3.8"
 services:
   server:
     image: quiz-cli
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     command: ["start-server"]
